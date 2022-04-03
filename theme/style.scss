@@ -7,24 +7,14 @@
 }
 
 .container {
-    background-color: #b00b13;
+    background-color: #b0b0b0;
     height: 100vh;
     display: flex;
     column-gap: 1em;
     justify-items: center;
     
-    :first-child {
-        height: 10px;
+    > .content {
+        display: flex;
     }
-    :nth-child(2){
-        width: 5px; 
-        justify-self: flex-end;
-    }
-    .row {
-        padding: 5rem;
-        height: fit-content;
     
-        text-align: center;
-        background-color: #fff;
-    }
 }

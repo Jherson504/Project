@@ -7,27 +7,47 @@ Homepage
 {% block content %}
 <div class="home--body">
     <nav class="home--body__header shadow--1">
-        <p class="title">NOTEBOOK</p>
+        <p class="title link">NOTEBOOK</p>
         <div class="home--body__header__nav">
             <ul class="menu">
-                <li class="title">HOME</li>
+                <li class="title link">HOME</li>
                 <li class="dropdown-menu">
-                    <p class="title" id="filters-link">FILTERS</p>
+                    <p class="title link" id="filters-link">FILTERS</p>
                     <ul class="dropdown-content shadow--1">
-                        {% for topic in topics %}
                         <li>
-                            <ul class="content">
-                                <li><input type="checkbox" id="filters.topics.{{topic.name}}"
-                                        name="filters.topics.{{topic.name}}"></li>
-                                <li><label for="filters.topics.{{topic.name}}">{{topic.name}}</label></li>
-                            </ul>
+                            <div class="content topics">
+                                <p class="title">Topics</p>
+                                {% for topic in topics %}
+                                <ul class="content">
+
+                                    <li><input type="checkbox" id="filters.topics.{{topic.name}}"
+                                            name="filters.topics.{{topic.name}}"></li>
+                                    <li><label for="filters.topics.{{topic.name}}">{{topic.name}}</label></li>
+
+                                </ul>
+                                {% endfor %}
+                            </div>
                         </li>
-                        {% endfor %}
+                        <li>
+                            <div class="content tags">
+                                <p class="title">Tags</p>
+                                {% for tag in tags %}
+                                <ul class="content">
+
+                                    <li><input type="checkbox" id="filters.tags.{{tag.name}}"
+                                            name="filters.tags.{{tag.name}}"></li>
+                                    <li><label for="filters.tags.{{tag.name}}">{{tag.name}}</label></li>
+
+                                </ul>
+                                {% endfor %}
+                            </div>
+                        </li>
+
                     </ul>
                 </li>
                 <li>
                     <ul class="search-bar">
-                        <li><label for="search" class="title">SEARCH</label></li>
+                        <li><label for="search" class="title link">SEARCH</label></li>
                         <li><input type="text" id="search" name="search"></li>
                     </ul>
                 </li>
