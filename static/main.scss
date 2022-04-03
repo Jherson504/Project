@@ -56,6 +56,7 @@ li {
                 
                 > .dropdown-menu.active {
                     > .dropdown-content{
+                        transform: translateY(0);
                         opacity: 1;
                     }
                 }
@@ -67,10 +68,15 @@ li {
                         pointer-events: none;
                         opacity: 0;
                         position: absolute;
+                        left: 0;
+                        top: 100%;
+                        transform: translateY(-1em);
                         color: black;
                         background-color: white;
                         gap: 1em;
                         padding: .25em 1em;
+
+                        transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
                         > li > .content{
                             display: flex;
                             flex-direction: column;
@@ -101,23 +107,37 @@ li {
     }
     &__main {
         margin-top: 1em;
-        padding: 0 1em;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1em;
-        
         >.explore {
-            >.title{
-                font-size: 1.6rem;
-            }
-            >.notebook{
-                padding: 1em;
-            }
-        }
+            padding: 1em;
+            color: white;
+            background-color: #333;
+            > .body {
+                color: black;
+                background-color: #fff;
+                
+                
+                >.notebook{
+                    padding: 1em;
+                    .title{
+                        font-size: 1.6rem;
+                    }
+                    > .body {
+                        padding: 1em;
+                        background-color: #333;
+                        color: white;
+                    }
+                }
+        
+        }    }
         >.activities {
             >.title{
                 font-size: 1.6rem;
             }
         }
+        
     }
 }
+

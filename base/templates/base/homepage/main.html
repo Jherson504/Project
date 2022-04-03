@@ -60,21 +60,24 @@ Homepage
     <main class="home--body__main shadow--1">
 
         <div class="explore">
-            <p class="title">Explore</p>
-            {% for notebook in notebooks %}
-            <div class="notebook">
-                <div class="header">
-                    <p class="title">{{notebook.name}}</p>
-                    <p>@{{notebook.owner.username}}</p>
-                    <p>{{notebook.created}}</p>
-                </div>
-                <div class="body">
-                    <p>{{notebook.description}}</p>
-                </div>
+            <p class="header title">Explore</p>
+            <div class="body">
+                {% for notebook in notebooks %}
+                <div class="notebook">
+                    <div class="header">
+                        <p class="title">{{notebook.name}}</p>
+                        <p>@{{notebook.owner.username}}</p>
+                        <p>{{notebook.created}}</p>
+                    </div>
+                    <div class="body">
+                        <p>{{notebook.description}}</p>
+                    </div>
 
+                </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
+
 
         <div class="activities">
             <p class="title">Activities</p>
