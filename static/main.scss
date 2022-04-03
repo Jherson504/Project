@@ -1,3 +1,4 @@
+$shadow1: .2em .2em .2em .2em rgba(0, 0, 0, .5);
 * {
     margin: 0;
     padding: 0;
@@ -14,21 +15,26 @@ a {
 li {
     list-style: none;
 }
-
+.shadow--1 {
+    box-shadow: $shadow1;
+}
 .home--body {
     background-color: #eaeaea;
     height: 100vh;
     padding: 0 5rem;
     &__header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: .25em;
-    
+        padding: .25em 1em;
+        column-gap: 5em;
         background-color: #333;
         color: white;
         .title {
             font-size: 2rem;
+        }
+        &__dropdown {
+            background-color: #999;
+            justify-items: flex-end;
         }
         &__nav {
             & > .menu{
@@ -51,11 +57,18 @@ li {
         }
     }
     &__main {
+        margin-top: 1em;
+        padding: 0 1em;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 1em;
+        
         .explore {
             .title{
                 font-size: 1.6rem;
+            }
+            .notebook{
+                padding: 1em;
             }
         }
         .activities {

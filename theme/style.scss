@@ -6,62 +6,25 @@
     line-height: 1.5em;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-li {
-    list-style: none;
-}
-
-.home--body {
-    background-color: #eaeaea;
+.container {
+    background-color: #b00b13;
     height: 100vh;
-    padding: 0 5rem;
-    &__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: .25em;
+    display: flex;
+    column-gap: 1em;
+    justify-items: center;
     
-        background-color: #333;
-        color: white;
-        .title {
-            font-size: 2rem;
-        }
-        &__nav {
-            & > .menu{
-                position: relative;
-                display: flex;
-                column-gap: 1em;
-                justify-content: space-evenly;
-                align-items: center;
-
-                .search-bar{
-                    display: flex;
-                    column-gap: 1em;
-                    align-items: center;
-                    input {
-                        border-radius: .4rem;
-                        padding: 0 1rem;
-                    }
-                }
-            }
-        }
+    :first-child {
+        height: 10px;
     }
-    &__main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        .explore {
-            .title{
-                font-size: 1.6rem;
-            }
-        }
-        .activities {
-            .title{
-                font-size: 1.6rem;
-            }
-        }
+    :nth-child(2){
+        width: 5px; 
+        justify-self: flex-end;
+    }
+    .row {
+        padding: 5rem;
+        height: fit-content;
+    
+        text-align: center;
+        background-color: #fff;
     }
 }

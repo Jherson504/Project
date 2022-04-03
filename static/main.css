@@ -16,6 +16,11 @@ li {
   list-style: none;
 }
 
+.shadow--1 {
+  -webkit-box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.5);
+          box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.5);
+}
+
 .home--body {
   background-color: #eaeaea;
   height: 100vh;
@@ -26,19 +31,23 @@ li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: .25em;
+  padding: .25em 1em;
+  -webkit-column-gap: 5em;
+          column-gap: 5em;
   background-color: #333;
   color: white;
 }
 
 .home--body__header .title {
   font-size: 2rem;
+}
+
+.home--body__header__dropdown {
+  background-color: #999;
+  justify-items: flex-end;
 }
 
 .home--body__header__nav > .menu {
@@ -73,14 +82,21 @@ li {
 }
 
 .home--body__main {
+  margin-top: 1em;
+  padding: 0 1em;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+  gap: 1em;
 }
 
 .home--body__main .explore .title {
   font-size: 1.6rem;
+}
+
+.home--body__main .explore .notebook {
+  padding: 1em;
 }
 
 .home--body__main .activities .title {

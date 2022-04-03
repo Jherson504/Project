@@ -1,34 +1,51 @@
-{% extends 'main.html' %} 
+{% extends 'main.html' %}
 
-{% block title %} 
+{% block title %}
 Homepage
 {% endblock title %}
 
 {% block content %}
-    <div class="home--body">
-        <header class="home--body__header shadow--1">
-            <p class="title">NOTEBOOK</p>
-            <nav class="home--body__header__nav">
+<div class="home--body">
+    <nav class="home--body__header shadow--1">
+        <p class="title">NOTEBOOK</p>
+        <div class="home--body__header__nav">
+            <ul class="menu">
+                <li>HOME</li>
+                <li>FILTERS</li>
+                <li>
+                    <ul class="search-bar">
+                        <li>SEARCH</li>
+                        <li><input type="text"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="home--body__header__dropdown">
+            <p class="add">Add</p>
+        </div>
+    </nav>
+    <main class="home--body__main shadow--1">
 
-                <ul class="menu">
-                    <li>HOME</li>
-                    <li>FILTERS</li>
-                    <li>
-                        <ul class="search-bar">
-                            <li>SEARCH</li>
-                            <li><input type="text"></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main class="home--body__main shadow--1">
-            <div class="explore">
-                <p class="title">Explore</p>
+        <div class="explore">
+            <p class="title">Explore</p>
+            {% for notebook in notebooks %}
+            <div class="notebook">
+                <div class="header">
+                    <p class="title">{{notebook.name}}</p>
+                    <p>@{{notebook.owner.username}}</p>
+                    <p>{{notebook.created}}</p>
+                </div>
+                <div class="body">
+                    <p>{{notebook.description}}</p>
+                </div>
+
             </div>
-            <div class="activities">
-                <p class="title">Activities</p>
-            </div>
-        </main>
-    </div>
+        </div>
+        {% endfor %}
+
+        <div class="activities">
+            <p class="title">Activities</p>
+        </div>
+    </main>
+</div>
 {% endblock content %}
