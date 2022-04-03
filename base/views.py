@@ -9,10 +9,12 @@ def home(request):
 
     all_notebooks = Notebook.objects.all()
     all_lectures = Lecture.objects.all()
+    all_topics = Topic.objects.all()
 
     notebooks = all_notebooks.filter(
         Q(tags__name__icontains=query)
     ).distinct()
 
-    context = {"notebooks": notebooks, "all_lectures": all_lectures}
+    context = {"topics": all_topics, "notebooks": notebooks,
+               "all_lectures": all_lectures}
     return render(request, 'base/homepage/main.html', context)

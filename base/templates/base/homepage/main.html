@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block title %}
 Homepage
 {% endblock title %}
@@ -10,18 +10,31 @@ Homepage
         <p class="title">NOTEBOOK</p>
         <div class="home--body__header__nav">
             <ul class="menu">
-                <li>HOME</li>
-                <li>FILTERS</li>
+                <li class="title">HOME</li>
+                <li class="dropdown-menu">
+                    <p class="title" id="filters-link">FILTERS</p>
+                    <ul class="dropdown-content shadow--1">
+                        {% for topic in topics %}
+                        <li>
+                            <ul class="content">
+                                <li><input type="checkbox" id="filters.topics.{{topic.name}}"
+                                        name="filters.topics.{{topic.name}}"></li>
+                                <li><label for="filters.topics.{{topic.name}}">{{topic.name}}</label></li>
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
                 <li>
                     <ul class="search-bar">
-                        <li>SEARCH</li>
-                        <li><input type="text"></li>
+                        <li><label for="search" class="title">SEARCH</label></li>
+                        <li><input type="text" id="search" name="search"></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div class="home--body__header__dropdown">
-            <p class="add">Add</p>
+            <p class="add title">Add</p>
         </div>
     </nav>
     <main class="home--body__main shadow--1">
@@ -47,5 +60,6 @@ Homepage
             <p class="title">Activities</p>
         </div>
     </main>
+    <script src="{% static 'script.js' %}"></script>
 </div>
 {% endblock content %}
