@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %}
+<div class="login-page">
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="login-page__body">
+            {% for message in messages %}
+            <p class="messages">{{message}}</p>
+            {% endfor %}
+            <ul class="login-page__body__content-container">
+                <li class="title">Login</li>
+                <li class="main">
+
+                    <ul class="username">
+                        <li><label for="username">Username</label></li>
+                        <li><input type="text" id="username" name="username" required placeholder="username"></li>
+                    </ul>
+                    <ul class="password">
+                        <li><label for="password">Password</label></li>
+                        <li><input type="password" id="password" name="password" required placeholder="password"></li>
+                    </ul>
+                </li>
+                <input type="submit" value="Submit">
+                <li class="footer">
+                    <ul>
+                        <li class="title">Don't have an account?</li>
+                        <li><a href="{% url 'sign-up-user' %}">Sign-up</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+{% endblock content %}

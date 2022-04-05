@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Sign-up
+{% endblock title %}
+
+{% block content %}
+<div class="signup">
+    <form class="signup__form" action="" method="post">
+        <div class="signup__form__body">
+            <p class="title">Sign-up</p>
+            <ul>
+                <li><label for="sign-up-username">Username</label></li>
+                <li><input type="text" id="sign-up-username" name="sign-up-username"></li>
+            </ul>
+            <ul>
+                <li><label for="sign-up-first_name">first_name</label></li>
+                <li><input type="text" id="sign-up-first_name" name="sign-up-first_name"></li>
+            </ul>
+            <ul>
+                <li><label for="sign-up-last_name">last_name</label></li>
+                <li><input type="text" id="sign-up-last_name" name="sign-up-last_name"></li>
+            </ul>
+            <ul>
+                <li><label for="sign-up-email">email</label></li>
+                <li><input type="text" id="sign-up-email" name="sign-up-email"></li>
+            </ul>
+            <ul>
+                <li><label for="sign-up-password">password</label></li>
+                <li><input type="text" id="sign-up-password" name="sign-up-password"></li>
+            </ul>
+            <ul>
+                <li><label for="sign-up-repeat_password">repeat_password</label></li>
+                <li><input type="text" id="sign-up-repeat_password" name="sign-up-repeat_password"></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,4 +1,6 @@
+
 $shadow1: .2em .2em .2em .2em rgba(0, 0, 0, .5);
+$shadow2: .2em .2em .2em .2em rgba(255, 255, 255, .5);
 * {
     margin: 0;
     padding: 0;
@@ -15,38 +17,84 @@ a {
 li {
     list-style: none;
 }
-.shadow--1 {
+@mixin border-radius-primary {
+    border-radius: .5rem;
+}
+@mixin container {
+    padding: .5em .5em;
+}
+@mixin flex--horizontal {
+    display: flex;
+    flex-direction: row;
+}
+@mixin flex--vertical {
+    display: flex;
+    flex-direction: column;
+}
+@mixin dropdown-menu {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    left: 0;
+    top: 100%;
+    transform: translateY(-1em);
+    padding: .25em 1em;
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+@mixin shadow--light {
     box-shadow: $shadow1;
 }
+@mixin shadow--dark {
+    box-shadow: $shadow2;
+}
+@mixin dropdown-menu--light {
+    @include dropdown-menu();
+    @include light();
+    @include shadow--light();
+}
+@mixin dark {
+    background-color: #333;
+    color: white;
+}
+@mixin light {
+    background-color: #fff;
+    color: black;
+}
+@mixin border--light {
+    border: 1px outset rgba(0, 0, 0, .5);
+}
+@mixin border--dark {
+    border: 1px outset rgba(255, 255, 255, .5);
+}
+input[type=text], input[type=password], input[type=email] {
+    @include border-radius-primary();
+    padding-inline: 1rem;
+}
 .home--body {
-    background-color: #eaeaea;
+    @include light;
     height: 100vh;
     padding: 0 5rem;
     &__header {
-        display: flex;
+        @include dark();
+        @include flex--horizontal();
         align-items: center;
-        padding: .25em 1em;
-        column-gap: 5em;
-        background-color: #333;
-        color: white;
+        padding-inline: 2em;
         >.title {
+            flex: .75;
             font-size: 2rem;
 
         }
         .link:hover {
             opacity: 0.5;
         }
-        &__dropdown {
-            flex-grow: 1.5;
-            background-color: #999;
-            justify-items: flex-end;
-        }
+        
         &__nav {
-            flex-grow: 1;
+            flex: 1;
             > .menu{
+                @include flex--horizontal();
                 position: relative;
-                display: flex;
-                justify-content: space-evenly;
+                justify-content: space-around;
                 align-items: center;
                 
                 > * {
@@ -64,19 +112,10 @@ li {
                     position: relative;
                     
                     > .dropdown-content {
+                        @include dropdown-menu--light();
                         display: flex;
-                        pointer-events: none;
-                        opacity: 0;
-                        position: absolute;
-                        left: 0;
-                        top: 100%;
-                        transform: translateY(-1em);
-                        color: black;
-                        background-color: white;
                         gap: 1em;
-                        padding: .25em 1em;
-
-                        transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+                        
                         > li > .content{
                             display: flex;
                             flex-direction: column;
@@ -89,10 +128,8 @@ li {
                         }
                     }
                 }
-                
-
                 .search-bar{
-                    flex-grow: 1;
+                    flex: 1;
                     display: flex;
                     column-gap: 1em;
                     align-items: center;
@@ -104,35 +141,51 @@ li {
                 }
             }
         }
+        &__dropdown {
+            position: relative;
+            flex: .25;
+            justify-items: flex-end;
+            > .dropdown-content {
+                @include dropdown-menu--light();
+                top: calc(100% + 1rem);
+                opacity: 1;
+            }
+            
+        }
+        &__main-menu {
+            @include light();
+            @include shadow--light();
+            padding: 0 .5em;
+        }
     }
     &__main {
         margin-top: 1em;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1em;
+        padding: 0 5em;
         >.explore {
+            @include dark();
+            @include border--dark();
             padding: 1em;
-            color: white;
-            background-color: #333;
             > .body {
-                color: black;
-                background-color: #fff;
-                
-                
+                @include light();
                 >.notebook{
                     padding: 1em;
                     .title{
                         font-size: 1.6rem;
                     }
                     > .body {
+                        @include dark();
                         padding: 1em;
-                        background-color: #333;
-                        color: white;
                     }
                 }
-        
-        }    }
+            
+            }
+        }    
         >.activities {
+            @include light();
+            @include border--light();
+            padding: 1em;
             >.title{
                 font-size: 1.6rem;
             }
@@ -140,4 +193,111 @@ li {
         
     }
 }
+.logout-page{
+    color: white;
+    background-color: black;
+    * {
+        background-color: black;
+    }
+    .title {
+        background-color: #333;
+    }
 
+}
+
+.login-page {
+    position: fixed;
+    background: #0008;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    &__body{
+        @include flex--vertical();
+        position: absolute;
+        @include dark();
+        @include container();
+        @include border-radius-primary();
+        width: 50vw;
+        height: 50vh;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 5rem;
+        justify-content: center;
+        .messages {
+            color: rgb(255, 64, 64);
+            font-size: medium;
+            flex-grow: 1;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        * {
+            font-size: 24px;
+        }
+        &__content-container {
+            @include flex--vertical();
+            align-items: center;
+            justify-items: center;
+            row-gap: 2em;
+            > .title {
+                text-align: center;
+                justify-self: center;
+            }
+        }
+    }
+    .input-box, .password, .username {
+        @include flex--horizontal();
+        column-gap: 1em;
+        > *{
+            flex: 1 1 0;
+        }
+        
+    }
+    .footer{
+        li {
+            text-align: center;
+        }
+        
+    }
+    input[type=submit] {
+        padding: 0 1em;
+        
+    }
+}
+.signup {
+    position: relative;
+   &__form {
+       &__body {
+           @include flex--vertical();
+           @include dark();
+           @include shadow--dark();
+           position: absolute;
+           width: 50vw;
+           height: 50vh;
+
+           padding: 5em 10em;
+
+           left: 50%;
+           top: 50%;
+           justify-content: flex-start;
+           align-items: center;
+           gap: 1em;
+           transform: translate(-50%, 50%);
+           .title {
+               font-size: large;
+           }
+           > ul {
+               @include flex--horizontal();
+               gap: 1em;
+               > *{
+                   flex: 1 1 0;
+               }
+               label {
+                   width: max-content;
+                   color: cyan;
+               }
+           }
+       }
+   }
+}

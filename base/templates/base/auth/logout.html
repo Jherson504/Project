@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Logout page
+{% endblock title %}
+
+{% block content %}
+<div class="logout-page">
+    <div class="body">
+        <p class="title">Are you sure you want to log out {{request.user.username}}</p>
+        <form method="get" action="">
+            <input name="confirm" value="Confirm" type="submit">
+        </form>
+    </div>
+</div>
+{% endblock content %}

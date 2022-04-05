@@ -6,14 +6,16 @@ Homepage
 
 {% block content %}
 <div class="home--body">
-    <nav class="home--body__header shadow--1">
+    <nav class="home--body__header">
         <p class="title link">NOTEBOOK</p>
         <div class="home--body__header__nav">
             <ul class="menu">
-                <li class="title link">HOME</li>
+                <li>
+                    <p class="title link">HOME</p>
+                </li>
                 <li class="dropdown-menu">
                     <p class="title link" id="filters-link">FILTERS</p>
-                    <ul class="dropdown-content shadow--1">
+                    <ul class="dropdown-content">
                         <li>
                             <div class="content topics">
                                 <p class="title">Topics</p>
@@ -54,10 +56,28 @@ Homepage
             </ul>
         </div>
         <div class="home--body__header__dropdown">
-            <p class="add title">Add</p>
+            <p class="add title link">ADD</p>
+            <ul class="dropdown-content">
+                <li>
+                    <a href="#">Notebook</a>
+                </li>
+                <li>
+                    <a href="#">Lecture</a>
+                </li>
+            </ul>
+        </div>
+        <div class="home--body__header__main-menu">
+            <a href="{% url 'authenticate-user' %}">
+                {% if request.user.is_authenticated %}
+                Logout
+                {% else %}
+                Login
+                {% endif %}
+
+            </a>
         </div>
     </nav>
-    <main class="home--body__main shadow--1">
+    <main class="home--body__main">
 
         <div class="explore">
             <p class="header title">Explore</p>
